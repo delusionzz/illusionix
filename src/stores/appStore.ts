@@ -4,10 +4,10 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-type App = {
-  title: string;
-  image: string;
-};
+// type App = {
+//   title: string;
+//   image: string;
+// };
 
 type AppState = {
   apps: {};
