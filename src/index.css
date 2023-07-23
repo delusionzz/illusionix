@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background;
+}
+
+.glass {
+  @apply shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border  border-solid;
+  -webkit-backdrop-filter: blur(5px);
+}
