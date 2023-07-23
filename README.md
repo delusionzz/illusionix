@@ -6,8 +6,8 @@
 
 > a list of featuers of illusionix as well as planned ones
 
-- [] Custom Themes
-- [] Apps
-- [] Windows
-- [] Custom Window Managers (i.e i3, awesome, ratpoison etc)
-- [] App store
+- [ ] Custom Themes
+- [ ] Apps
+- [ ] Windows
+- [ ] Custom Window Managers (i.e i3, awesome, ratpoison etc)
+- [ ] App store
