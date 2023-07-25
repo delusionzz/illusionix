@@ -8,6 +8,6 @@
 
 - [ ] Custom Themes
 - [ ] Apps
-- [ ] Windows
+- [x] Windows
 - [ ] Custom Window Managers (i.e i3, awesome, ratpoison etc)
 - [ ] App store
