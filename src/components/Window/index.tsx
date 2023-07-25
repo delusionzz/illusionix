@@ -19,10 +19,10 @@ const Index: React.FC<{
           dragListener={false}
           dragMomentum={false}
           dragConstraints={contraint}
-          className="flex flex-col w-[40rem] h-[30rem]"
+          className="flex flex-col w-[40rem] h-[30rem] resize p-2"
         >
           <div
-            className="bg-secondary text-text select-none flex items-center px-2 rounded-t-sm justify-between"
+            className="bg-secondary cursor-move  text-text select-none flex items-center px-2 rounded-t-sm justify-between"
             onPointerDown={(e) => {
               dragControls.start(e);
             }}
