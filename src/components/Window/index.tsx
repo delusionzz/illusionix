@@ -3,10 +3,13 @@ import { RefObject, useState, ReactNode } from "react";
 import { Circle } from "lucide-react";
 const Index: React.FC<{
   title: string;
-  icon: string;
-  contraint: RefObject<Element>;
+  icon: ReactNode | string;
+  contraint?: RefObject<Element>;
   content: ReactNode | string;
-}> = ({ title, icon, contraint, content }) => {
+  id: string;
+  width?: number;
+  height?: number;
+}> = ({ title, icon, contraint, content, id, width, height }) => {
   const dragControls = useDragControls();
   const [visible, setVisible] = useState(true);
 
@@ -19,15 +22,24 @@ const Index: React.FC<{
           dragListener={false}
           dragMomentum={false}
           dragConstraints={contraint}
-          className="flex flex-col w-[40rem] h-[30rem] resize p-2"
+          style={{
+            width: `${width ? `${width}rem` : "40rem"}`,
+            height: `${height ? `${height}rem` : "30rem"}`,
+          }}
+          data-id={id}
+          className={`flex fixed z-[9] flex-col resize p-2 left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] `}
         >
           <div
-            className="bg-secondary cursor-move  text-text select-none flex items-center px-2 rounded-t-sm justify-between"
+            className="bg-secondary cursor-move text-text select-none flex items-center px-2 rounded-t-sm justify-between"
             onPointerDown={(e) => {
               dragControls.start(e);
             }}
           >
-            <img src={icon} className="w-4 h-4" alt={`icon`} />
+            {typeof icon === "string" ? (
+              <img src={icon} className="w-4 h-4" alt={`icon`} />
+            ) : (
+              icon
+            )}
             <h1>{title}</h1>
             <div className="flex items-center space-x-1 p-1">
               <Circle className="text-yellow-500 fill-yellow-500 cursor-pointer w-4 h-4" />

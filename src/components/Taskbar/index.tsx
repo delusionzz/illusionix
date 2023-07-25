@@ -1,6 +1,6 @@
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { Moon, Sparkles, Github } from "lucide-react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 const container: Variants = {
   initial: { y: 10 },
   animate: { y: 0 },
@@ -11,7 +11,7 @@ const Menu: Variants = {
   animate: { y: 0 },
   exit: { y: 400 },
 };
-const Index: React.FC = () => {
+const Index: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
@@ -31,7 +31,7 @@ const Index: React.FC = () => {
             }}
             className="bg-primary/25 glass w-96 h-96 p-3 rounded-tr-md flex border-accent/25"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col items-center w-10 space-y-4 border-r border-accent/40 pr-2">
               <Sparkles className="text-slate-500 " />
               <Github className="text-gray-700" />
             </div>
@@ -49,6 +49,7 @@ const Index: React.FC = () => {
         <div className="p-2 hover:bg-accent/20 text-slate-500 hover:text-slate-400 transition-all rounded-md cursor-pointer">
           <Moon onClick={() => setMenuOpen(!menuOpen)} />
         </div>
+        {children}
       </motion.div>
     </div>
   );
