@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Auth, Taskbar } from "./components";
-import { useSettingState } from "./stores";
+import { useSettingState, useWindowStore } from "./stores";
 import { AnimatePresence } from "framer-motion";
 import { Calculator } from "./components/Apps";
-
+import { Window } from "./components";
 function App() {
   const { settings, change } = useSettingState();
+  const { windows } = useWindowStore();
   const constraintsRef = useRef(null);
 
   useEffect(() => {
@@ -20,11 +21,22 @@ function App() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen">
+    <main className="w-full min-h-screen" ref={constraintsRef}>
       <AnimatePresence mode="wait">
         {settings.auth.loggedIn ? (
           <div className="flex flex-col">
-            <div className="min-h-screen w-full" ref={constraintsRef}></div>
+            {windows.map((window, i) => {
+              return (
+                <Window
+                  key={i}
+                  title={window.title as string}
+                  content={window.content}
+                  icon={window.icon}
+                  id={window.id as string}
+                />
+              );
+            })}
+            <div className="min-h-screen w-full"></div>
             <Taskbar>
               <Calculator />
             </Taskbar>

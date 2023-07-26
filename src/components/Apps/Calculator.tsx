@@ -1,14 +1,14 @@
 import { Calculator as ICalculator, Delete } from "lucide-react";
 import { useState } from "react";
-import { useId } from "react";
-import { Window } from "..";
-
+import _ from "lodash";
+import { useWindowStore } from "../../stores";
 const Calculator = () => {
-  const [WindowVisible, setWindowVisible] = useState(false);
-  const id = useId();
+  const [hasWindow, setHasWindow] = useState(false);
+  const { add } = useWindowStore();
+  const id = _.uniqueId("window_");
   return (
     <>
-      {WindowVisible && (
+      {/* {WindowVisible && (
         <Window
           title="Calculator"
           icon={<ICalculator className="text-accent w-5 h-5" />}
@@ -17,10 +17,19 @@ const Calculator = () => {
           width={26}
           height={32}
         />
-      )}
+      )} */}
       <ICalculator
         className="text-accent cursor-pointer"
-        onClick={() => setWindowVisible(!WindowVisible)}
+        onClick={() => {
+          if (hasWindow) return;
+          add({
+            title: "Calculator",
+            content: <App />,
+            icon: <ICalculator className="text-accent w-5 h-5" />,
+            id: id,
+          });
+          setHasWindow(true);
+        }}
       />
     </>
   );

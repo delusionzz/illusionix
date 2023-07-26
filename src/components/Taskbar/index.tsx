@@ -1,6 +1,7 @@
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { Moon, Sparkles, Github } from "lucide-react";
 import { ReactNode, useState } from "react";
+import { Settings } from "../Apps";
 const container: Variants = {
   initial: { y: 10 },
   animate: { y: 0 },
@@ -31,9 +32,15 @@ const Index: React.FC<{ children: ReactNode }> = ({ children }) => {
             }}
             className="bg-primary/25 glass w-96 h-96 p-3 rounded-tr-md flex border-accent/25"
           >
-            <div className="flex flex-col items-center w-10 space-y-4 border-r border-accent/40 pr-2">
-              <Sparkles className="text-slate-500 " />
-              <Github className="text-gray-700" />
+            <div className="flex flex-col items-center w-12 space-y-4 border-r border-accent/40 pr-2">
+              <Sparkles className="text-slate-500 hover:text-yellow-300 transition-all" />
+              <a
+                href="https://github.com/delusionzz/illusionix"
+                target="_blank"
+              >
+                <Github className="text-gray-400 w-10 h-10 rounded-md cursor-pointer p-2 hover:text-gray-200 hover:bg-slate-400/25 transition-all" />
+              </a>
+              <Settings />
             </div>
           </motion.div>
         )}
